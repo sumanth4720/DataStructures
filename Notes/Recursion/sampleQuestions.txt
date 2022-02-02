@@ -1,0 +1,12 @@
+Easy:
+Print numbers from 1 to n
+print numbers from n to 1
+fibonacci series
+factorial
+sum of numbers from one to n
+find a value integer x in an unsorted integer array
+check weather given string is palindrome or not
+find sum of digits of a given number n
+
+
+

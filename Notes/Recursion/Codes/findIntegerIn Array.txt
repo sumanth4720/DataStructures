@@ -1,0 +1,9 @@
+bool find(int a[],int s,int e,int x){
+if(s>e)
+return 0;
+if(a[s]==x)
+return 1;
+if(a[e]==x)
+return 1;
+find(a,s+1,e-1,x);
+}
