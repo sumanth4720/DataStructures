@@ -1,0 +1,48 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+const int  maxVal=(1<<16)-1;
+
+bool comp(int a,int b){
+return(a<b);
+}
+int minVal(vector<int>& v){
+ int m=v[0];
+ for(int i:v){
+    if(i<m){
+        m=i;
+    }
+ }
+ return m;
+}
+
+int coinChange(vector<int> coins,int amount,int a[]){
+ if(amount==0){
+    return 0;
+ }
+ if(amount<0){
+    return maxVal;
+ }
+ if(a[amount]!=0){
+    return a[amount];
+ }
+ vector<int> minCoinVector;
+ for(int i=0;i<coins.size();i++){
+    minCoinVector.push_back(coinChange(coins,amount-coins[i],a));
+ }
+ a[amount]=1+minVal(minCoinVector);
+ return a[amount];
+}
+
+int main()
+{   
+    vector<int> coins={1,2,5};
+    int a[100];
+    for(int i=0;i<100;i++){
+        a[i]=0;
+    }
+    cout<<coinChange(coins,20,a);
+
+    return 0;
+}

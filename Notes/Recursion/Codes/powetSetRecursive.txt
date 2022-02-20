@@ -1,0 +1,14 @@
+vector <string> powerSet(string s)
+{
+   //Your code here
+   vector<string> result;
+  
+   result.push_back("");
+   for(char c:s){
+       int resultSize=result.size();
+       for(int i=0;i<resultSize;i++){
+           result.push_back(c+result[i]);
+       }
+   }
+   return result;
+}

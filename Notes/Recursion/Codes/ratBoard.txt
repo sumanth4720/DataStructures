@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+const int colSize=30;
+
+int ratBoard(int row,int col,int board[][colSize]){
+    if(row==0 && col==0){
+        return 1;
+    }
+    if(row==0 && col!=0){
+        return 1;
+    }
+    if(row!=0 && col==0){
+        return 1;
+    }
+    if(board[row][col]!=0){
+        return board[row][col];
+    }
+    board[row][col]=ratBoard(row-1,col,board)+ratBoard(row,col-1,board);
+    return board[row][col];
+}
+
+int main()
+{   int board[30][30];
+    for(int i=0;i<30;i++){
+        for(int j=0;j<30;j++){
+            board[i][j]=0;
+        }
+    }
+     cout<<ratBoard(10,10,board);
+    return 0;
+}

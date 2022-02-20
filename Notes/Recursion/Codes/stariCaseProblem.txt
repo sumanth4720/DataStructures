@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int stairCase(int steps,vector<int>& SI,int a[]){
+ if(steps<0){
+    return 0;
+ }
+ if(steps==0){
+    return 1;
+ }
+ if(a[steps]!=0){
+    return a[steps];
+ }
+ for(int i=0;i<SI.size();i++){
+    a[steps]+=stairCase(steps-SI[i],SI,a);
+ }
+ return a[steps];
+}
+
+int main()
+{    vector<int> SI={1,2,3};
+     int a[100];
+     for(int i=0;i<100;i++){
+        a[i]=0;
+     }
+    cout<<stairCase(10,SI,a);
+    return 0;
+}
